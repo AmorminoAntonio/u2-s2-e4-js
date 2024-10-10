@@ -18,9 +18,9 @@ console.log("L'area del rettangolo è: " + areaRettangolo);
 
 function crazySum(num1, num2) {
   if (num1 + num2 === 19) {
-    return Math.abs(num1 + num2) * 3;
+    return (num1 + num2) * 3;
   } else {
-    return Math.abs(num1 + num2);
+    return num1 + num2;
   }
 }
 console.log(crazySum(54, 2));
@@ -73,16 +73,17 @@ console.log(boundary(84));
  ritornare la stringa originale senza alterarla.
 */
 
-function epify(epiString) {
-  if (epiString.startsWith("EPICODE")) {
-    return epiString;
+function epify(string) {
+  if (string.startsWith("EPICODE")) {
+    return string;
   } else {
-    return "EPICODE" + " " + epiString;
+    return "EPICODE" + " " + string;
   }
 }
-console.log(epify("EPI, SIETE VOI"));
+console.log(epify("EPICODE EPI, SIETE VOI"));
 console.log(epify("sei la migliore"));
 console.log(epify("CIAO A TUTTI"));
+console.log(epify("EPICODE"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -91,16 +92,14 @@ console.log(epify("CIAO A TUTTI"));
  di 3 o di 7. (Suggerimento: usa l'operatore modulo)
 */
 
-
-function check3and7 (NumS) {
-    
-    return (NumS % 3 === 0) || (NumS % 7 === 0)
+function check3and7(NumS) {
+  return NumS % 3 === 0 || NumS % 7 === 0;
 }
 
-console.log(check3and7(3))
-console.log(check3and7(35))
-console.log(check3and7(21))
-console.log(check3and7(8))
+console.log(check3and7(3));
+console.log(check3and7(35));
+console.log(check3and7(21));
+console.log(check3and7(8));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -108,15 +107,29 @@ console.log(check3and7(8))
  Scrivi una funzione di nome "reverseString", il cui scopo è invertire una stringa fornita come parametro (es. "EPICODE" --> "EDOCIPE")
 */
 
-function reverseString (word) {
-    return word.split("").reverse("").join("")
-};
-console.log(reverseString("notorietà"))
-console.log(reverseString("heila"))
-console.log(reverseString("fabolous"))
-console.log(reverseString("costante"))
-console.log(reverseString("determinazione"))
+// questo è un modo (più esaustivo - step by step)
 
+/*  const reverseString = function (word) {
+const letters = word.split("");
+  console.log(letters);
+  const reversed = letters.reverse("");
+  console.log(reversed);
+  const joined = reversed.join("");
+  console.log(joined);
+  return joined;
+};*/
+
+// questo è un modo più rapido ma devi ricordarti i passaggi sequenziali
+function reverseString(word) {
+  return word.splice("").reverse("").join("");
+}
+
+console.log(reverseString("EPICODE"));
+console.log(reverseString("notorietà"));
+console.log(reverseString("heila"));
+console.log(reverseString("fabolous"));
+console.log(reverseString("costante"));
+console.log(reverseString("determinazione"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -125,7 +138,21 @@ console.log(reverseString("determinazione"))
  La funzione deve rendere maiuscola la prima lettera di ogni parola contenuta nella stringa.
 */
 
-
+const upperFirst = function (s1) {
+  const stringWords = s1.split(" ");
+  console.log(stringWords);
+  const newSentence = [];
+  for (i = 0; i < stringWords.length; i++) {
+    const singleWord = stringWords[i];
+    const firstChar = singleWord.charAt(0);
+    const remainChar = singleWord.slice(1);
+    const fullWord = firstChar.concat(remainChar);
+    console.log(fullWord);
+    newSentence.push(fullWord);
+  }
+  return newSentence.join(" ");
+};
+console.log(upperFirst());
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -134,8 +161,8 @@ console.log(reverseString("determinazione"))
  della stringa originale.
 */
 
-function cutString (string) {
-        return string.slice(1, -1);
+function cutString(string) {
+  return string.slice(1, -1);
 }
 console.log(cutString("chiamami"));
 console.log(cutString("heila belli miei"));
@@ -145,7 +172,5 @@ console.log(cutString("heila belli miei"));
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
-
-
 
 /* SCRIVI QUI LA TUA RISPOSTA */
